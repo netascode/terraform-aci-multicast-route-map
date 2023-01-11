@@ -30,7 +30,7 @@ variable "description" {
   }
 }
 
-variable "multicast_route_map_entries" {
+variable "entries" {
 
   description = "Multicast route map entries. `order` allowed range: `0-9999`. `action` allowed values: `permit` or `deny`. Default value `action`: `permit`."
   type = list(object({
@@ -44,14 +44,14 @@ variable "multicast_route_map_entries" {
 
   validation {
     condition = alltrue([
-      for entry in var.multicast_route_map_entries : entry.order >= 0 && entry.order <= 9999
+      for entry in var.entries : entry.order >= 0 && entry.order <= 9999
     ])
     error_message = "`order`: Allowed range: `0-9999`."
   }
 
   validation {
     condition = alltrue([
-      for entry in var.multicast_route_map_entries : try(contains(["permit", "deny"], entry.action), false)
+      for entry in var.entries : try(contains(["permit", "deny"], entry.action), false)
     ])
     error_message = "`action`: Allowed values: `permit` or `deny`."
   }

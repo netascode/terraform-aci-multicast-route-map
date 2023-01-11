@@ -24,7 +24,7 @@ module "main" {
   name        = "TEST_FULL"
   description = "My Description"
   tenant      = aci_rest_managed.fvTenant.content.name
-  multicast_route_map_entries = [
+  entries = [
     {
       order     = 1
       action    = "deny"

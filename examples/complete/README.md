@@ -19,7 +19,7 @@ module "aci_multicast_route_map" {
   tenant      = "ABC"
   name        = "MRM1"
   description = "My Description"
-  multicast_route_map_entries = [
+  entries = [
     {
       order     = 1
       action    = "deny"

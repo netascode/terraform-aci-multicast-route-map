@@ -8,7 +8,7 @@ resource "aci_rest_managed" "pimRouteMapPol" {
 }
 
 resource "aci_rest_managed" "pimRouteMapEntry" {
-  for_each   = { for entry in var.multicast_route_map_entries : entry.order => entry }
+  for_each   = { for entry in var.entries : entry.order => entry }
   dn         = "${aci_rest_managed.pimRouteMapPol.id}/rtmapentry-${each.key}"
   class_name = "pimRouteMapEntry"
   content = {
