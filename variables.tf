@@ -1,15 +1,5 @@
-variable "name" {
-  description = "Multicast Route Map name."
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.name))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
-  }
-}
-
 variable "tenant" {
-  description = "Multicast Route Map's Tenant Name."
+  description = "Multicast route map's tenant name."
   type        = string
   default     = ""
 
@@ -19,9 +9,30 @@ variable "tenant" {
   }
 }
 
+variable "name" {
+  description = "Multicast route map name."
+  type        = string
+
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.name))
+    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+  }
+}
+
+variable "description" {
+  description = "Description."
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
+    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
+  }
+}
+
 variable "multicast_route_map_entries" {
 
-  description = "Multicast Route Map Entries. `order` allowed range: `0-9999`. `action` allowed values: `permit` or `deny`. Default value `action`: `permit`"
+  description = "Multicast route map entries. `order` allowed range: `0-9999`. `action` allowed values: `permit` or `deny`. Default value `action`: `permit`."
   type = list(object({
     action    = optional(string, "permit")
     group_ip  = optional(string, "0.0.0.0")

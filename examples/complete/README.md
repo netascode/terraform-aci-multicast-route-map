@@ -14,10 +14,11 @@ Note that this example will create resources. Resources can be destroyed with `t
 ```hcl
 module "aci_multicast_route_map" {
   source  = "netascode/multicast-route-map/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
-  name   = "MRM1"
-  tenant = "ABC"
+  tenant      = "ABC"
+  name        = "MRM1"
+  description = "My Description"
   multicast_route_map_entries = [
     {
       order     = 1

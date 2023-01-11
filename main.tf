@@ -2,7 +2,8 @@ resource "aci_rest_managed" "pimRouteMapPol" {
   dn         = "uni/tn-${var.tenant}/rtmap-${var.name}"
   class_name = "pimRouteMapPol"
   content = {
-    name = var.name
+    name  = var.name
+    descr = var.description
   }
 }
 

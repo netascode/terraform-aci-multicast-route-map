@@ -21,8 +21,9 @@ resource "aci_rest_managed" "fvTenant" {
 module "main" {
   source = "../.."
 
-  name   = "TEST_FULL"
-  tenant = aci_rest_managed.fvTenant.content.name
+  name        = "TEST_FULL"
+  description = "My Description"
+  tenant      = aci_rest_managed.fvTenant.content.name
   multicast_route_map_entries = [
     {
       order     = 1
@@ -51,6 +52,12 @@ resource "test_assertions" "pimRouteMapPol" {
     got         = data.aci_rest_managed.pimRouteMapPol.content.name
     want        = "TEST_FULL"
   }
+
+  equal "descr" {
+    description = "descr"
+    got         = data.aci_rest_managed.pimRouteMapPol.content.descr
+    want        = "My Description"
+  }
 }
 
 data "aci_rest_managed" "pimRouteMapEntry_1" {
@@ -60,7 +67,7 @@ data "aci_rest_managed" "pimRouteMapEntry_1" {
 }
 
 resource "test_assertions" "pimRouteMapEntry_1" {
-  component = "pimRouteMapEntry"
+  component = "pimRouteMapEntry_1"
 
   equal "action" {
     description = "action"
@@ -100,7 +107,7 @@ data "aci_rest_managed" "pimRouteMapEntry_2" {
 }
 
 resource "test_assertions" "pimRouteMapEntry_2" {
-  component = "pimRouteMapEntry"
+  component = "pimRouteMapEntry_2"
 
   equal "action" {
     description = "action"
