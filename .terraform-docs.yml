@@ -5,12 +5,12 @@ formatter: markdown table
 content: |-
   [![Tests](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
 
-  # Terraform ACI Scaffolding Module
+  # Terraform ACI Multicast Route Map Module
 
-  Description
+  Manages ACI Multicast Route Map
 
   Location in GUI:
-  `Tenants` » `XXX`
+  `Tenants` » `XXX` » `Policies` » `Protocols` » `Route Maps for Multicast`
 
   ## Examples
 
