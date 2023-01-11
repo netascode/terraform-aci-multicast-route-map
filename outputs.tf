@@ -1,9 +1,9 @@
 output "dn" {
-  value       = aci_rest_managed.fvTenant.id
-  description = "Distinguished name of `fvTenant` object."
+  value       = aci_rest_managed.pimRouteMapPol.id
+  description = "Distinguished name of `pimRouteMapPol` object."
 }
 
 output "name" {
-  value       = aci_rest_managed.fvTenant.content.name
-  description = "Tenant name."
+  value       = aci_rest_managed.pimRouteMapPol.content.name
+  description = "Multicast Route Map name."
 }
