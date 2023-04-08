@@ -1,3 +1,7 @@
+## 0.1.2 (unreleased)
+
+- Fix resource dependencies
+
 ## 0.1.1
 
 - BREAKING CHANGE: Rename `multicast_route_map_entries` to `entries`

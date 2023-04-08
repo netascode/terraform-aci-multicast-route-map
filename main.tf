@@ -9,7 +9,7 @@ resource "aci_rest_managed" "pimRouteMapPol" {
 
 resource "aci_rest_managed" "pimRouteMapEntry" {
   for_each   = { for entry in var.entries : entry.order => entry }
-  dn         = "${aci_rest_managed.pimRouteMapPol.id}/rtmapentry-${each.key}"
+  dn         = "${aci_rest_managed.pimRouteMapPol.dn}/rtmapentry-${each.key}"
   class_name = "pimRouteMapEntry"
   content = {
     action = each.value.action
